@@ -1,6 +1,7 @@
 import express from 'express';
 // import cors from 'cors';
 import authRoutes from './routes/authRoutes.js';
+import workspaceRoutes from './routes/workspaceRoutes.js';
 // import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 import connectDB from './config/db.js';
@@ -13,6 +14,7 @@ connectDB();
 
 app.use(express.json());
 app.use('/api/auth', authRoutes);
+app.use('/api/workspaces', workspaceRoutes);
 
 app.get('/', (req, res) => {
     res.send('Hello World!');

@@ -1,5 +1,5 @@
 import express from 'express';
-import { registerUser, loginUser } from '../controllers/authController.js';
+import { registerUser, loginUser, authMiddleware } from '../controllers/authController.js';
 const router = express.Router();
 
 
@@ -9,4 +9,8 @@ router.post('/register', registerUser);
 //login route
 router.post('/login', loginUser);
 
+//protected route example
+router.get('/protected',authMiddleware, (req, res) => {
+    res.send("This is a protected route");
+});
 export default router;
